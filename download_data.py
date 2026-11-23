@@ -1,7 +1,4 @@
-"""Download and check the market data used by this project."""
-
 from pathlib import Path
-
 import pandas as pd
 import yfinance as yf
 
@@ -13,7 +10,6 @@ REQUIRED_COLUMNS = ["Open", "High", "Low", "Close"]
 
 
 def download_symbol(symbol: str) -> pd.DataFrame:
-    """Download unadjusted daily prices and corporate actions for one symbol."""
     return yf.Ticker(symbol).history(
         start=START_DATE,
         interval="1d",
@@ -23,7 +19,6 @@ def download_symbol(symbol: str) -> pd.DataFrame:
 
 
 def validate_data(data: pd.DataFrame, symbol: str) -> None:
-    """Stop with a clear error if downloaded data does not look reasonable."""
     if data.empty:
         raise ValueError(f"{symbol}: no data was downloaded")
 
@@ -51,7 +46,6 @@ def validate_data(data: pd.DataFrame, symbol: str) -> None:
 
 
 def save_data(data: pd.DataFrame, symbol: str) -> Path:
-    """Save one symbol to a CSV file and return its path."""
     OUTPUT_DIRECTORY.mkdir(parents=True, exist_ok=True)
     output_path = OUTPUT_DIRECTORY / f"{symbol}.csv"
 
