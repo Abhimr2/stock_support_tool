@@ -1,29 +1,34 @@
-# Stock Support Tool
+# Stock Investment Tool
 
-A personal research project that explores whether a simple, disciplined machine-learning system can rank diversified ETFs and estimate their risk using only information available at each decision time.
+A personal tool that uses stock-market data to help me make better investment decisions.
 
-This project is a decision-support experiment, not an autonomous trading system. It will produce monthly research recommendations for manual review and will be compared with simple passive and systematic benchmarks after estimated trading costs.
+## What it will do
 
-## Learning path
+1. Download market data from Yahoo Finance.
+2. Analyze price trends and risk.
+3. Use machine learning to score stocks and ETFs.
+4. Show the strongest choices in a simple dashboard.
+5. Test past recommendations before I use them personally.
 
-1. Freeze the research question and evaluation rules.
-2. Audit the Yahoo Finance data before engineering features.
-3. Build passive and momentum baselines.
-4. Implement chronological walk-forward evaluation.
-5. Train a simple return-ranking model.
-6. Add a separate volatility model and deterministic risk rules.
-7. Stress-test the frozen system.
-8. Run it in shadow or paper mode before considering any personal use.
+The tool will provide information and suggestions. I will make the final investment decisions myself.
 
-## Current step
+## First version
 
-Read [`research_charter.md`](research_charter.md). Change any assumption you genuinely disagree with now. Once model results have been viewed, the frozen choices in that file must not be changed to improve the backtest.
+The first version will:
 
-## Data policy
+- Use daily market data.
+- Analyze a small list of stocks and ETFs.
+- Predict whether each investment is likely to perform well over the next month.
+- Rank the choices from strongest to weakest.
+- Show expected risk alongside each score.
+- Track how the suggestions would have performed in the past.
 
-- Yahoo Finance via `yfinance` is used only for this private, educational project.
-- Raw downloads will be preserved locally with fetch metadata.
-- Historical execution prices and total-return calculations will be kept separate.
-- Any current value used for a real decision must be checked against the brokerage account.
-- The downloaded Yahoo data will not be redistributed from this repository.
+## Build order
+
+1. Download and inspect market data.
+2. Create useful indicators from the data.
+3. Build a simple prediction model.
+4. Test the model on older market data.
+5. Build a dashboard.
+6. Track its suggestions without investing money first.
 
